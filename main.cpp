@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "base.hpp"
-#include "mult.hpp"
-#include "div.hpp"
-#include "sub.hpp"
-#include "add.hpp"
-#include "op.hpp"
-#include "rand.hpp"
-#include "pow.hpp"
+#include "header/base.hpp"
+#include "header/mult.hpp"
+#include "header/div.hpp"
+#include "header/sub.hpp"
+#include "header/add.hpp"
+#include "header/op.hpp"
+#include "header/rand.hpp"
+#include "header/pow.hpp"
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -30,3 +30,5 @@ int main() {
     std::cout << minus->stringify() << " = " << minus->evaluate() << std::endl;
 	return 0;
 }
+
+
