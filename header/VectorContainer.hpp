@@ -39,7 +39,7 @@ class VectorContainer: public Container {
 		// calls on the previously set sorting-algorithm. Checks if sort_function is not
 		// null, throw exception if otherwise
 		virtual void sort(){
-			//sort_function->sort(); // set the type of sorting algorithm
+			sort_function->sort(this);
 		}
 		/* Functions Needed to Sort */
         //switch tree locations
