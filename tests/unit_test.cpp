@@ -46,6 +46,29 @@ TEST(ListContainerTest, EmptyTest) {
     ASSERT_EQ(con->size(), 0);
 }
 
+TEST(ListContainerTest, AddAtEndTest) {
+    Op* seven = new Op(7);
+    Op* four = new Op(4);
+    Mult* TreeA = new Mult(seven, four);
+
+    Op* three = new Op(3);
+    Op* two = new Op(2);
+    Add* TreeB = new Add(three, two);
+
+    Op* ten = new Op(10);
+    Op* six = new Op(6);
+    Sub* TreeC = new Sub(ten, six);
+
+    ListContainer* con = new ListContainer();
+    con->add_element(TreeA);
+    con->add_element(TreeB);
+    con->add_element(TreeC);
+
+    ASSERT_EQ(con->size(), 3);
+    EXPECT_EQ(con->at(0)->evaluate(), 28);
+    EXPECT_EQ(con->at(1)->evaluate(), 5);
+    EXPECT_EQ(con->at(2)->evaluate(), 4);
+}
 
 
 
@@ -160,7 +183,7 @@ TEST(SortTestSet, BubbleSortEmptyVector) {
 	ASSERT_EQ(container->size(), 0);
 }
 
-/*TEST(SortTestSet, BubbleSortTestList) {
+TEST(SortTestSet, BubbleSortTestList) {
     Op* seven = new Op(7);
     Op* four = new Op(4);
     Mult* TreeA = new Mult(seven, four);
@@ -201,7 +224,7 @@ TEST(SortTestSet, BubbleSortEmptyList) {
 	container->sort();
 
 	ASSERT_EQ(container->size(), 0);
-}*/
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
