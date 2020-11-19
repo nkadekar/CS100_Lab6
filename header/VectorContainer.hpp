@@ -19,7 +19,9 @@ class VectorContainer: public Container {
 	public:
         /* Constructors */
         VectorContainer() : Container() { };
-        VectorContainer(Sort* function) : Container(function) { };
+        VectorContainer(Sort* function) { 
+			sort_function = function;
+		}
 
 		/* Non Virtual Functions */
         void set_sort_function(Sort* sort_function){

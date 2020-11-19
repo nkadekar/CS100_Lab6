@@ -17,7 +17,9 @@ class ListContainer: public Container {
 	public:
 		ListContainer() : Container() { };
 
-		ListContainer(Sort* function) : Container(function) { };
+		ListContainer(Sort* function) { 
+			_sort_function = function;
+		}
 
 		void set_sort_function(Sort* sort_function){
 			_sort_function = sort_function;
