@@ -43,6 +43,7 @@ int main() {
 
 	container->print();
 	cout << endl;
+	cout << "Selection Sort" << endl;
 	container->sort();
 	container->print();
 	cout << endl;
@@ -50,6 +51,7 @@ int main() {
 	container->swap(0, 2);
 	container->print();
 	cout << endl;
+	cout << "Bubble Sort" << endl;
 	container->set_sort_function(new BubbleSort());
 	container->sort();
 	container->print();
@@ -64,6 +66,7 @@ int main() {
 
     container2->print();
     cout << endl;
+	cout << "Selection Sort" << endl;
     container2->sort();
     container2->print();
     cout << endl;
@@ -76,6 +79,7 @@ int main() {
 
     container3->print();
     cout << endl;
+	cout << "Bubble Sort" << endl;
     container3->sort();
     container3->print();
     cout << endl;
