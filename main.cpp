@@ -16,18 +16,33 @@
 using namespace std;
 
 int main() {
-    // This is a very basic main, and being able to correctly execute this main
-    // does not constitute a completed lab. Make sure you write unit tests for
-    // all the classes that you create (and can be instantiated) in this lab
-    Base* three = new Op(3);
-    Base* seven = new Op(7);
-    Base* four = new Op(4);
-    Base* two = new Op(2);
-    Base* mult = new Mult(seven, four);
-    Base* add = new Add(three, mult);
-    Base* minus = new Sub(add, two);
+	Op* seven = new Op(7);
+    Op* four = new Op(4);
+    Mult* TreeA = new Mult(seven, four);
 
-    std::cout << minus->stringify() << " = " << minus->evaluate() << std::endl;
+    Op* three = new Op(3);
+    Op* two = new Op(2);
+    Add* TreeB = new Add(three, two);
+
+    Op* ten = new Op(10);
+    Ope* six = new Op(6);
+    Sub* TreeC = new Sub(ten, six);
+
+    VectorContainer* container = new VectorContainer(new SelectionSort());
+    container->add_element(TreeA);
+    container->add_element(TreeB);
+    container->add_element(TreeC);
+
+	container->print();
+	container->sort();
+	container->print();
+
+	container->swap(0, 2);
+	container->print();
+	container->set_sort_function(new BubbleSort());
+	container->sort();
+	container->print();
+
 	return 0;
 }
 
