@@ -31,7 +31,7 @@ class ListContainer: public Container {
             Base* data = nullptr;
             for(auto it = _list.begin(); it != _list.end(); ++it){
 				data = *it;
-				data->stringify();
+				cout << data->stringify() << " = " << data->evaluate();
 				std::cout << std::endl;
 			}
 		}

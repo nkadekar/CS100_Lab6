@@ -3,6 +3,7 @@
 
 #include "container.hpp"
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ class VectorContainer: public Container {
 		// iterate through trees and output the expressions (use stringify())
         virtual void print(){
 			for (int i = 0; i < trees.size(); i++){
-				trees.at(i)->stringify();
+				cout << trees.at(i)->stringify() << " = " << trees.at(i)->evaluate();
 				cout << endl;
 			}
 		}
