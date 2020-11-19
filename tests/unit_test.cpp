@@ -282,8 +282,6 @@ TEST(SortTestSet, BubbleSortEmptyList) {
     ASSERT_EQ(container->size(), 0);
 }
 
-
-
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
