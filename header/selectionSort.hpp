@@ -15,12 +15,15 @@ class SelectionSort : public Sort{
         /* Pure Virtual Functions */
         virtual void sort(Container* container){
 			int i, j, min_index;
-			for(i = 0; i < container->size(); i++){
+			for(i = 0; i < container->size() - 1; i++){
 				min_index = i;
-				for(j = i; j < container->size(); j ++){
-					min_index = j;
-					container->swap(min_index, i);
+				for(j = i + 1; j < container->size();  j++){
+					if(container->at(j)->evaluate() < container->at(min_index)->evaluate()){
+						min_index = j;
+					}
 				}
+				container->swap(min_index, i);
+
 			}
 		}
 };
