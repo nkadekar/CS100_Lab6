@@ -9,6 +9,7 @@
 #include "../header/ListContainer.hpp"
 #include "../header/VectorContainer.hpp"
 #include "../header/bubbleSort.hpp"
+#include "../header/selectionSort.hpp"
 #include <string>
 #include <sstream>
 
@@ -45,13 +46,6 @@ TEST(ListContainerTest, EmptyTest) {
     ListContainer* con = new ListContainer();
     ASSERT_EQ(con->size(), 0);
 }
-
-
-
-
-
-
-
 
 TEST(VectorContainerTest, add_at_size) {
     Op* seven = new Op(7);
@@ -117,6 +111,92 @@ TEST(VectorContainerTest, Size1) {
 	EXPECT_EQ(container->size(), 1);
 }
 
+TEST(SortTestSet, SelectionSortTestVector) {
+    Op* seven = new Op(7);
+    Op* five = new Op(5);
+    Mult* TreeA = new Mult(seven, five);
+
+    Op* three = new Op(4);
+    Op* two = new Op(3);
+    Add* TreeB = new Add(three, two);
+
+    Op* ten = new Op(10);
+    Op* six = new Op(6);
+    Sub* TreeC = new Sub(ten, six);
+
+    VectorContainer* container = new VectorContainer();
+
+    container->add_element(TreeA);
+    container->add_element(TreeB);
+    container->add_element(TreeC);
+
+    ASSERT_EQ(container->size(), 3);
+    EXPECT_EQ(container->at(0)->evaluate(), 35);
+    EXPECT_EQ(container->at(1)->evaluate(), 7);
+    EXPECT_EQ(container->at(2)->evaluate(), 4);
+
+    container->set_sort_function(new SelectionSort());
+    container->sort();
+
+    ASSERT_EQ(container->size(), 3);
+    EXPECT_EQ(container->at(0)->evaluate(), 4);
+    EXPECT_EQ(container->at(1)->evaluate(), 7);
+    EXPECT_EQ(container->at(2)->evaluate(), 35);
+}
+
+TEST(SortTestSet, SelectionSortEmptyVector) {
+	VectorContainer* container = new VectorContainer();
+	
+	ASSERT_EQ(container->size(), 0);
+
+	container->set_sort_function(new SelectionSort());
+	container->sort();
+
+	ASSERT_EQ(container->size(), 0);
+}
+
+TEST(SortTestSet, SelectionSortTestList) {
+	Op* seven = new Op(7);
+    Op* five = new Op(5);
+    Mult* TreeA = new Mult(seven, five);
+
+    Op* three = new Op(4);
+    Op* two = new Op(3);
+    Add* TreeB = new Add(three, two);
+ 
+    Op* ten = new Op(10);
+    Op* six = new Op(6);
+    Sub* TreeC = new Sub(ten, six);
+
+    VectorContainer* container = new VectorContainer();
+
+    container->add_element(TreeA);
+    container->add_element(TreeB);
+    container->add_element(TreeC);
+ 
+    ASSERT_EQ(container->size(), 3);
+    EXPECT_EQ(container->at(0)->evaluate(), 35);
+    EXPECT_EQ(container->at(1)->evaluate(), 7);
+    EXPECT_EQ(container->at(2)->evaluate(), 4);
+
+    container->set_sort_function(new SelectionSort());
+    container->sort();
+
+    ASSERT_EQ(container->size(), 3);
+    EXPECT_EQ(container->at(0)->evaluate(), 4);
+    EXPECT_EQ(container->at(1)->evaluate(), 7);
+    EXPECT_EQ(container->at(2)->evaluate(), 35);
+}
+
+TEST(SortTestSet, SelectionSortEmptyList) {
+	ListContainer* container = new ListContainer();
+
+	ASSERT_EQ(container->size(), 0);
+	container->set_sort_function(new SelectionSort());
+	container->sort();
+	ASSERT_EQ(container->size(), 0);
+}
+
 TEST(SortTestSet, BubbleSortTestVector) {
     Op* seven = new Op(7);
     Op* four = new Op(4);
@@ -150,17 +230,17 @@ TEST(SortTestSet, BubbleSortTestVector) {
 }
 
 TEST(SortTestSet, BubbleSortEmptyVector) {
-	VectorContainer* container = new VectorContainer();
-	
-	ASSERT_EQ(container->size(), 0);
+    VectorContainer* container = new VectorContainer();
 
-	container->set_sort_function(new BubbleSort());
-	container->sort();
+    ASSERT_EQ(container->size(), 0);
 
-	ASSERT_EQ(container->size(), 0);
+    container->set_sort_function(new SelectionSort());
+    container->sort();
+
+    ASSERT_EQ(container->size(), 0);
 }
 
-/*TEST(SortTestSet, BubbleSortTestList) {
+TEST(SortTestSet, BubbleSortTestList) {
     Op* seven = new Op(7);
     Op* four = new Op(4);
     Mult* TreeA = new Mult(seven, four);
@@ -174,6 +254,7 @@ TEST(SortTestSet, BubbleSortEmptyVector) {
     Sub* TreeC = new Sub(ten, six);
 
     ListContainer* container = new ListContainer();
+
     container->add_element(TreeA);
     container->add_element(TreeB);
     container->add_element(TreeC);
@@ -193,15 +274,13 @@ TEST(SortTestSet, BubbleSortEmptyVector) {
 }
 
 TEST(SortTestSet, BubbleSortEmptyList) {
-	ListContainer* container = new ListContainer();
-	
-	ASSERT_EQ(container->size(), 0);
+    ListContainer* container = new ListContainer();
 
-	container->set_sort_function(new BubbleSort());
-	container->sort();
-
-	ASSERT_EQ(container->size(), 0);
-}*/
+    ASSERT_EQ(container->size(), 0);
+    container->set_sort_function(new BubbleSort());
+    container->sort();
+    ASSERT_EQ(container->size(), 0);
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
