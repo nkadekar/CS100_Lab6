@@ -37,7 +37,7 @@ class ListContainer: public Container {
 		}
 
 		virtual void sort(){
-			sort_function->sort(this);
+			_sort_function->sort(this);
 		}
 		
 		virtual void swap(int i, int j){
